@@ -1,0 +1,14 @@
+version: '2.1'
+
+services:
+  idiomatic-hapi-ts-server-test:
+    build:
+      context: ../../../
+      dockerfile: Dockerfile
+    command: node dist/test/container/server.js
+    environment:
+      UV_THREADPOOL_SIZE: 128
+      NODE_ENV: test
+    volumes:
+      - ../../../:/usr/src/app/
+      - ../../../config/:/usr/src/app/config/

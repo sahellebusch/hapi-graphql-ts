@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  idiomatic-hapi-ts-server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: ['pm2-runtime', 'pm2.json', '--web', '3001']
+    environment:
+      UV_THREADPOOL_SIZE: 128
+      NODE_APP_INSTANCE: 0
+      NODE_ENV: docker
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app/
+      - ./config:/usr/src/app/config

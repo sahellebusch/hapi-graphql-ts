@@ -1,0 +1,36 @@
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier", "tslint-plugin-prettier"],
+  "linterOptions": {
+    "exclude": ["node_modules/**/*.ts"]
+  },
+  "rules": {
+    "prettier": [true, {
+      "singleQuote": true,
+      "bracketSpacing": false,
+      "printWidth": 100
+    }],
+    "interface-name": false,
+    "trailing-comma": false,
+    "ordered-imports": false,
+    "import-spacing": false,
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-operator",
+      "check-typecast",
+      "check-decl",
+      "check-separator",
+      "check-preblock",
+      "check-rest-spread"
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case"
+    ],
+    "object-literal-sort-keys": false,
+    "no-console": false
+  }
+}

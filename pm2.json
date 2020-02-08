@@ -1,0 +1,5 @@
+{
+  "name": "idiomatic-hapi-ts-server",
+  "script": "npm start",
+  "kill_timeout": 10000
+}
