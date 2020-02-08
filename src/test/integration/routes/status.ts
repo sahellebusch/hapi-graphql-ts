@@ -1,5 +1,4 @@
 import {Server} from 'hapi';
-import {assert} from 'chai';
 import httpStatus from 'http-status-codes';
 import buildServer from '../../../server';
 
@@ -17,20 +16,19 @@ const mockLogger = {
 describe('/status', () => {
   let server: Server = null;
 
-  before(() =>
+  beforeAll(() =>
     buildServer(mockLogger, false).then(srv => {
       server = srv;
-    })
-  );
+    }));
 
-  it(`should respond 'ok' when the service is healthy`, () =>
+  test(`should respond 'ok' when the service is healthy`, () =>
     server
       .inject({
         method: 'GET',
         url: '/status'
       })
       .then(({statusCode, result: reponse}) => {
-        assert.equal(statusCode, httpStatus.OK);
-        assert.deepEqual(reponse, {status: 'Ok'});
+        expect(statusCode).toEqual(httpStatus.OK);
+        expect(reponse).toEqual({status: 'Ok'});
       }));
 });
