@@ -1,5 +1,11 @@
 import {ServerRoute} from 'hapi';
 
+function getStatus(): any {
+  return {
+    status: 'Ok'
+  };
+}
+
 const route: ServerRoute = {
   method: 'GET',
   path: '/status',
@@ -23,11 +29,5 @@ const route: ServerRoute = {
     }
   }
 };
-
-function getStatus() {
-  return {
-    status: 'Ok'
-  };
-}
 
 export default route;

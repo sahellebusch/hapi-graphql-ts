@@ -5,7 +5,7 @@ services:
     build:
       context: ../../../
       dockerfile: Dockerfile
-    command: node dist/test/container/server.js
+    command: tail -f /dev/null
     environment:
       UV_THREADPOOL_SIZE: 128
       NODE_ENV: test

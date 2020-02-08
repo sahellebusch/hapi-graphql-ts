@@ -18,7 +18,10 @@ export function serverMethods(request: Request): ServerMethods {
 const port = process.env.PORT || (config.has('port') ? config.get('port') : null) || 3000;
 const host = process.env.HOST || (config.has('host') ? config.get('host') : null) || 'localhost';
 
-export default function buildServer(providedLogger?: Logger, serverLogs = true) {
+export default function buildServer(
+  providedLogger?: Logger,
+  serverLogs = true
+): Promise<hapi.Server> {
   const server = new hapi.Server({
     host,
     port

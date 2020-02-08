@@ -3,7 +3,7 @@ import swagger from 'hapi-swagger';
 import inert from 'inert';
 import vision from 'vision';
 
-const packageInfo = require('../../package'); /* tslint:disable-line:no-var-requires */
+const packageInfo = require('../../package'); // eslint-disable-line @typescript-eslint/no-var-requires
 
 const swaggerPlugin: any = {
   plugin: swagger,
@@ -25,5 +25,5 @@ const swaggerPlugin: any = {
 export default {
   name: 'documentation',
   version: packageInfo.version,
-  register: (server: Server) => server.register([inert, vision, swaggerPlugin])
+  register: (server: Server): Promise<void> => server.register([inert, vision, swaggerPlugin])
 };

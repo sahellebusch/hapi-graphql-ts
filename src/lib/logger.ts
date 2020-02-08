@@ -12,12 +12,12 @@ const logLevels = {
   error: 'ERROR'
 };
 
-const log = <A>(level: string, message: string, detail?: Nullable<A>) => {
+const log = <A>(level: string, message: string, detail?: Nullable<A>): void => {
   if (detail) {
     const detailMessage = typeof detail === 'object' ? JSON.stringify(detail, null, 1) : detail;
-    console.log(`${level}: ${message}`, detailMessage); // tslint:disable-line:no-console
+    console.log(`${level}: ${message}`, detailMessage);
   } else {
-    console.log(`${level}: ${message}`); // tslint:disable-line:no-console
+    console.log(`${level}: ${message}`);
   }
 };
 
