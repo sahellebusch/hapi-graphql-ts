@@ -1,7 +1,7 @@
-import {Server} from 'hapi';
+import {Server} from '@hapi/hapi';
 import swagger from 'hapi-swagger';
-import inert from 'inert';
-import vision from 'vision';
+import inert from '@hapi/inert';
+import vision from '@hapi/vision';
 
 const packageInfo = require('../../package'); // eslint-disable-line @typescript-eslint/no-var-requires
 

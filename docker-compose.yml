@@ -1,17 +1,21 @@
 version: '3.7'
 
 services:
-  idiomatic-hapi-ts-server:
+  hapi-ts-server:
     build:
       context: ./
       dockerfile: Dockerfile
-    command: ['pm2-runtime', 'pm2.json', '--web', '3001']
+    command: 'npm run start:dev'
     environment:
       UV_THREADPOOL_SIZE: 128
       NODE_APP_INSTANCE: 0
       NODE_ENV: docker
+      DB_URL: postgres://root:123@postgres/project
     ports:
-      - "3000:3000"
+      - "3001:3001"
     volumes:
       - ./:/usr/src/app/
-      - ./config:/usr/src/app/config
+  postgres:
+    build: postgres
+    volumes:
+      - ./postgres/data:/var/lib/postgres/data

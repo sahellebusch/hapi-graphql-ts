@@ -1,4 +1,4 @@
-import {Server} from 'hapi';
+import {Server} from '@hapi/hapi';
 import httpStatus from 'http-status-codes';
 import buildServer from '../../../server';
 
@@ -8,18 +8,19 @@ function noop(): void {
 
 const mockLogger = {
   info: noop,
-  debug: noop,
   warn: noop,
-  error: noop
+  error: noop,
+  fatal: noop
 };
 
 describe('/status', () => {
   let server: Server = null;
 
   beforeAll(() =>
-    buildServer(mockLogger, false).then(srv => {
+    buildServer({providedLogger: mockLogger}).then(srv => {
       server = srv;
-    }));
+    })
+  );
 
   test(`should respond 'ok' when the service is healthy`, () =>
     server
@@ -27,8 +28,8 @@ describe('/status', () => {
         method: 'GET',
         url: '/status'
       })
-      .then(({statusCode, result: reponse}) => {
+      .then(({statusCode, result: response}) => {
         expect(statusCode).toEqual(httpStatus.OK);
-        expect(reponse).toEqual({status: 'Ok'});
+        expect(response).toEqual({status: 'Ok'});
       }));
 });

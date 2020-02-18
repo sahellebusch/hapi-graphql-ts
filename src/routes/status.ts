@@ -1,4 +1,4 @@
-import {ServerRoute} from 'hapi';
+import {ServerRoute} from '@hapi/hapi';
 
 function getStatus(): any {
   return {

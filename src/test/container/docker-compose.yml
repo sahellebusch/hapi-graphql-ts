@@ -9,6 +9,8 @@ services:
     environment:
       UV_THREADPOOL_SIZE: 128
       NODE_ENV: test
+      DB_URL: postgres://root:123@postgres/project
     volumes:
       - ../../../:/usr/src/app/
-      - ../../../config/:/usr/src/app/config/
+  postgres:
+    build: ../../../postgres

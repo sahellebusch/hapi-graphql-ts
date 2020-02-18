@@ -28,13 +28,13 @@ module.exports = {
     ],
 
     // '@typescript-eslint/interface-name-prefix': 'error',
-  //   '@typescript-eslint/explicit-member-accessibility': 'off',
+    //   '@typescript-eslint/explicit-member-accessibility': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-  //   '@typescript-eslint/explicit-function-return-type': [
-  //     'warn',
-  //     {
-  //       allowExpressions: true // lambdas are inferable plus it's annoying to type out ALL of them
-  //     }
-  //   ]
+    //   '@typescript-eslint/explicit-function-return-type': [
+    //     'warn',
+    //     {
+    //       allowExpressions: true // lambdas are inferable plus it's annoying to type out ALL of them
+    //     }
+    //   ]
   }
 };

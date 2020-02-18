@@ -1,5 +1,5 @@
-import {Server} from 'hapi';
-import good from 'good';
+import {Server} from '@hapi/hapi';
+import good from '@hapi/good';
 
 const packageInfo = require('../../package'); // eslint-disable-line @typescript-eslint/no-var-requires
 
@@ -10,9 +10,9 @@ export interface LoggingOptions {
 export default {
   name: 'logging',
   version: packageInfo.version,
-  register: (server: Server, options: LoggingOptions): Promise<void> => {
+  register: async (server: Server, options: LoggingOptions): Promise<void> => {
     if (!options.serverLogs) {
-      return Promise.resolve();
+      return;
     }
 
     const logging: any = {

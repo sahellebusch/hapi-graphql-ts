@@ -1,0 +1,47 @@
+CREATE OR REPLACE FUNCTION touch_updated_column()
+  RETURNS TRIGGER AS
+$$
+BEGIN
+  IF ROW (NEW.*) IS DISTINCT FROM ROW (OLD.*)
+  THEN
+    NEW.updated = now();
+    RETURN NEW;
+  ELSE
+    RETURN OLD;
+  END IF;
+END;
+$$
+  LANGUAGE plpgsql;
+
+CREATE TABLE IF NOT EXISTS "project"
+(
+  id      SERIAL PRIMARY KEY,
+  name    TEXT NOT NULL,
+  created TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+  updated TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now()
+);
+
+DROP TRIGGER IF EXISTS update_project ON "project";
+
+CREATE TRIGGER update_project
+  BEFORE UPDATE
+  ON "project"
+  FOR EACH ROW
+EXECUTE PROCEDURE touch_updated_column();
+
+CREATE TABLE IF NOT EXISTS "task"
+(
+  id      SERIAL PRIMARY KEY,
+  title   TEXT NOT NULL,
+  project INTEGER REFERENCES project(id),
+  created TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+  updated TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now()
+);
+
+DROP TRIGGER IF EXISTS update_task ON "task";
+
+CREATE TRIGGER update_task
+  BEFORE UPDATE
+  ON "task"
+  FOR EACH ROW
+EXECUTE PROCEDURE touch_updated_column();
