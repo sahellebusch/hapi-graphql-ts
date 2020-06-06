@@ -16,7 +16,7 @@
     "@typescript-eslint/parser": "^2.20.0",
     "accept": "^3.1.3",
     "apollo-datasource": "^0.7.0",
-    "apollo-server": "^2.10.1",
+    "apollo-server": "^2.14.2",
     "bluebird": "^3.7.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
